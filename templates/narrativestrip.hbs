@@ -1,0 +1,47 @@
+<div class="ns-inner component-inner">
+    {{> component this}}
+    <div class="ns-widget component-widget">
+
+        {{#each _items}}
+        <div id="{{_id}}" class="ns-slide-container">
+  
+            <a href="#" class="ns-controls ns-control-left" id="{{_id}}" alt="{{_buttons.previous}}">
+                <div class="icon icon-controls-left"></div>
+            </a>
+            <a href="#" class="ns-controls ns-control-right" id="{{_id}}" alt="{{_buttons.next}}">
+                <div class="icon icon-controls-right"></div>
+            </a>
+            
+            <div class="ns-slider clearfix">
+                {{#each _subItems}}
+                <div class="i{{_imageId}} ns-slider-graphic {{#if visited}}visited{{/if}}"></div>
+                {{/each}}
+            </div>
+
+            <div class="ns-strapline">
+                <div  id="{{_id}}" class="ns-strapline-header">
+                    <div class="ns-strapline-header-inner clearfix">
+                        {{#each _subItems}}
+                        <div class="ns-strapline-title">
+                            <h5 class="ns-strapline-title-inner">
+                               {{{strapline}}} 
+                            </h5>
+                        </div>
+                        {{/each}}
+                    </div>
+                    <div class="ns-strapline-header-inner ns-noop clearfix">
+                        {{#each _subItems}}
+                        <div class="ns-strapline-title">
+                            <h5 class="ns-strapline-title-inner">
+                            </h5>
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        {{/each}}
+       
+    </div>    
+</div>

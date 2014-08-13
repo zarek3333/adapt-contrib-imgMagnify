@@ -1,0 +1,103 @@
+.narrativestrip-component {    
+
+    &.desktop { 
+        .ns-slide-container {
+            float: left;
+            margin-right: 3%;
+            width: 100%;
+        }
+        .ns-slider-graphic {
+            margin-right: 0;
+            width:100%;
+        }
+    }
+
+    .ns-slide-container {
+        width: 100%;
+        position: relative;
+        overflow-x: hidden;
+        float: left;
+    }  
+
+    .ns-slider-graphic {
+        float: left;
+        position: relative;
+        overflow:hidden;
+        line-height: 1;
+        font-size: 0px;
+    }
+
+    .ns-controls {
+        display: block;
+        width: (@icon-size*2);
+        height: (@icon-size*2);
+        position: absolute;
+        top: 60%;
+        margin-top: -(@icon-size*2);
+        z-index: 10;
+        text-decoration: none;
+        background-color:@button-color;
+        &:hover {
+            background-color:@button-hover-color;
+            .icon {
+                color:@button-text-hover-color;
+            }
+        }
+        .icon {
+            margin: (@icon-size/2);
+            color:@button-text-color;
+        }
+    }
+
+    .ns-control-left {
+        left: 0;
+    }
+
+    .ns-control-right {
+        right: 0;
+    }
+
+    .ns-strapline {
+        color: @inverted-foreground-color;
+        height: auto;
+        position: absolute;
+        bottom: 0px;
+    }
+
+    
+
+    .ns-strapline-header {
+        overflow: hidden;
+        position: relative;
+    }
+
+    .ns-strapline-header-inner {
+        &.ns-noop {
+            opacity: .5;
+            background-color: @inverted-background-color;
+        }
+        &:not(.ns-noop) {
+            position:absolute;
+        }
+    }
+
+    .ns-strapline-title {
+        float: left;
+    }
+
+    .ns-strapline-title-inner {
+        height: (@item-padding-top + @item-padding-bottom + @icon-size);
+        line-height: (@item-padding-top + @item-padding-bottom + @icon-size);
+        padding-left: (@icon-size/2);
+        padding-right: (@item-padding-left + @item-padding-right + @icon-size);
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        text-align: center;
+    }
+
+    .ns-hidden {
+        display:none;
+    }
+
+}
