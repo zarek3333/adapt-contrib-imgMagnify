@@ -1,0 +1,30 @@
+{
+  "name": "adapt-narrativestrip",
+  "homepage": "https://github.com/cgkineo/adapt-narrativestrip",
+  "authors": [
+    "Brian Quinn <brian@learningpool.com>",
+    "Daryl Hedley <darylhedley@hotmail.com>"
+  ],
+  "displayName": "Narrative",
+  "component": "narrative",
+  "assetFields": [
+    "_items[]._graphic.src"
+  ],
+  "description": "A component that displays an image gallery with accompanying text",
+  "main": "/js/adapt-narrativestrip.js",
+  "keywords": [
+    "adapt-plugin",
+    "adapt-component"
+  ],
+  "license": "GPLv3",
+  "_release": "b5845c3a13",
+  "_resolution": {
+    "type": "branch",
+    "branch": "develop",
+    "commit": "b5845c3a13ed5dbbdb7f1b534e79c6323e83727e"
+  },
+  "_source": "git://github.com/cgkineo/adapt-narrativestrip.git",
+  "_target": "develop",
+  "_originalSource": "adapt-narrativestrip",
+  "_direct": true
+}
