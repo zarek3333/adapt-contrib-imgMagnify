@@ -20,6 +20,14 @@
 
             <div class="ns-strapline">
                 <div  id="{{_id}}" class="ns-strapline-header">
+                    <div class="ns-strapline-header-inner ns-noop clearfix">
+                        {{#each _subItems}}
+                        <div class="ns-strapline-title">
+                            <h5 class="ns-strapline-title-inner">
+                            </h5>
+                        </div>
+                        {{/each}}
+                    </div>
                     <div class="ns-strapline-header-inner clearfix">
                         {{#each _subItems}}
                         <div class="ns-strapline-title">
@@ -29,14 +37,8 @@
                         </div>
                         {{/each}}
                     </div>
-                    <div class="ns-strapline-header-inner ns-noop clearfix">
-                        {{#each _subItems}}
-                        <div class="ns-strapline-title">
-                            <h5 class="ns-strapline-title-inner">
-                            </h5>
-                        </div>
-                        {{/each}}
-                    </div>
+                    
+
                 </div>
             </div>
 

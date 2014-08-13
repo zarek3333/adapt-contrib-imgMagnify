@@ -67,17 +67,21 @@
     
 
     .ns-strapline-header {
-        overflow: hidden;
+        
         position: relative;
     }
 
     .ns-strapline-header-inner {
+        overflow: hidden;
         &.ns-noop {
             opacity: .5;
             background-color: @inverted-background-color;
+             position:absolute;
+             bottom: 0px;
         }
         &:not(.ns-noop) {
-            position:absolute;
+           position:absolute;
+           bottom: 0px;
         }
     }
 
