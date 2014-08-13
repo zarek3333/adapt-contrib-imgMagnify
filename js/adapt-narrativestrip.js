@@ -81,8 +81,11 @@ define(function(require) {
                         var imageURL = canvas.toDataURL();
 
                         var img = document.createElement("img");
-                        img.src = imageURL;
                         thisHandle.$('#'+_items[s]._id+'.ns-slide-container .i'+image._id).append(img);
+                        $(img).bind("load", function() {
+                            $(img).attr("height","");
+                        });
+                        img.src = imageURL;
 
                     }
 
@@ -121,6 +124,7 @@ define(function(require) {
                 var slideWidth = this.$('.ns-slide-container').width();
                 var slideCount = item._itemCount;
                 var marginRight = this.$('.ns-slider-graphic').css('margin-right');
+
                 var extraMargin = marginRight === "" ? 0 : parseInt(marginRight);
                 var fullSlideWidth = (slideWidth + extraMargin) * slideCount;
                 var iconWidth = this.$('.ns-popup-open').outerWidth();
@@ -139,6 +143,10 @@ define(function(require) {
                 this.$('.ns-strapline-header-inner').css('margin-left', margin);
 
                 item._finalItemLeft = fullSlideWidth - slideWidth;
+            });
+
+            _.each(this.$('.ns-slider-graphic'), function(item) {
+                $(item).attr("height","").css("height","");
             });
         },
 
