@@ -3,8 +3,7 @@
   "version": "0.0.2",
   "homepage": "https://github.com/cgkineo/adapt-narrativestrip",
   "authors": [
-    "Brian Quinn <brian@learningpool.com>",
-    "Daryl Hedley <darylhedley@hotmail.com>"
+    "Oliver Foster <oliver.foster@kineo.com"
   ],
   "displayName" : "Narrative Strip",
   "component" : "narrativestrip",

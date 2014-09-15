@@ -1,8 +1,9 @@
 /*
-* adapt-contrib-narrative
+* adapt-learnerassistant
 * License - http://github.com/adaptlearning/adapt_framework/LICENSE
-* Maintainers - Brian Quinn <brian@learningpool.com>, Daryl Heldey <darylhedley@hotmail.com>
+* Maintainers - Oliver Foster <oliver.foster@kineo.com>
 */
+
 define(function(require) {
 
     var ComponentView = require("coreViews/componentView");

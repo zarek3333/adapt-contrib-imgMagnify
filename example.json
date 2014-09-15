@@ -1,3 +1,9 @@
+/*
+* adapt-learnerassistant
+* License - http://github.com/adaptlearning/adapt_framework/LICENSE
+* Maintainers - Oliver Foster <oliver.foster@kineo.com>
+*/
+
 //to go in component.json
 {
     "_id":"c-195",
