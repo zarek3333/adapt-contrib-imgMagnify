@@ -66,9 +66,9 @@ guide the learner’s interaction with the component.
 
 
 ----------------------------
-**Version number:**  2.0
-**Framework versions:** 2.0
-**Author / maintainer:** C&G Kineo
-**Accessibility support:** N/A
+**Version number:**  2.0  
+**Framework versions:** 2.0  
+**Author / maintainer:** C&G Kineo  
+**Accessibility support:** N/A  
 **RTL support:** No  
 **Cross-platform coverage:** To be confirmed
