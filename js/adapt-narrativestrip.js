@@ -1,13 +1,4 @@
-/*
-* adapt-learnerassistant
-* License - http://github.com/adaptlearning/adapt_framework/LICENSE
-* Maintainers - Oliver Foster <oliver.foster@kineo.com>
-*/
-
-define(function(require) {
-
-    var ComponentView = require("coreViews/componentView");
-    var Adapt = require("coreJS/adapt");
+define([ "coreJS/adapt", "coreViews/componentView" ], function(Adapt, ComponentView) {
 
     var Narrative = ComponentView.extend({
 
@@ -15,11 +6,9 @@ define(function(require) {
             'click .ns-controls':'onNavigationClicked'
         },
 
-
         preRender: function () {
             this.listenTo(Adapt, 'device:resize', this.resizeControl, this);
-            this.setDeviceSize();
-            
+            this.setDeviceSize();            
         },
 
         setDeviceSize: function() {
@@ -49,6 +38,9 @@ define(function(require) {
 
             var height = undefined;
             var width = undefined;
+
+            var imagesToLoadCount = 0;
+            var imagesLoadedCount = 0;
 
             _.each(_images, function(image) {
                 var imageObj = new Image();
@@ -82,16 +74,22 @@ define(function(require) {
                         var imageURL = canvas.toDataURL();
 
                         var img = document.createElement("img");
-                        thisHandle.$('#'+_items[s]._id+'.ns-slide-container .i'+image._id).append(img);
+                        thisHandle.$('.item-'+s+'.ns-slide-container .i'+image._id).append(img);
+                        imagesToLoadCount++;
                         $(img).bind("load", function() {
                             $(img).attr("height","");
+                            imagesLoadedCount++;
+
+                            if (imagesToLoadCount == imagesLoadedCount) {
+                                thisHandle.setReadyStatus();
+                                $(window).resize();
+                            }
                         });
                         img.src = imageURL;
 
                     }
 
                     if (imagesSplit == images) {
-                        thisHandle.setReadyStatus();
                         thisHandle.calculateWidths();
                     }
 
@@ -101,16 +99,23 @@ define(function(require) {
         },
 
         setupNarrative: function() {
+
+        	this.completionEvent = this.model.get('_setCompletionOn') || false; 
+
+            if(this.completionEvent === 'inview'){
+                this.$('.component-widget').on('inview', _.bind(this.inview, this));
+            }
+
             this.setDeviceSize();
             
             var _items = this.model.get("_items");
             var thisHandle = this;
-            _.each(_items, function(item) {
+            _.each(_items, function(item, index) {
                 item._itemCount = item._subItems.length;
                 if (item._stage) {
-                    thisHandle.setStage(item._id, item._stage, true);
+                    thisHandle.setStage(index, item._stage, true);
                 } else {
-                    thisHandle.setStage(item._id, (item._initialItemIndex || 0) );
+                    thisHandle.setStage(index, (item._initialItemIndex || 0) );
                 }
             });
             
@@ -121,7 +126,7 @@ define(function(require) {
         calculateWidths: function() {
             //calc widths for each item
             var _items = this.model.get("_items");
-            _.each(_items, function(item) {
+            _.each(_items, function(item, index) {
                 var slideWidth = this.$('.ns-slide-container').width();
                 var slideCount = item._itemCount;
                 var marginRight = this.$('.ns-slider-graphic').css('margin-right');
@@ -130,17 +135,17 @@ define(function(require) {
                 var fullSlideWidth = (slideWidth + extraMargin) * slideCount;
                 var iconWidth = this.$('.ns-popup-open').outerWidth();
 
-                this.$('#'+item._id+'.ns-slide-container .ns-slider-graphic').width(slideWidth)
+                this.$('.item-'+index+'.ns-slide-container .ns-slider-graphic').width(slideWidth)
                 this.$('.ns-strapline-header').width(slideWidth);
                 this.$('.ns-strapline-title').width(slideWidth);
 
-                this.$('#'+item._id+'.ns-slide-container .ns-slider').width(fullSlideWidth);
+                this.$('.item-'+index+'.ns-slide-container .ns-slider').width(fullSlideWidth);
                 this.$('.ns-strapline-header-inner').width(fullSlideWidth);
 
                 var stage = item._stage;//this.model.get('_stage');
                 var margin = -(stage * slideWidth);
 
-                this.$('#'+item._id+'.ns-slide-container .ns-slider').css('margin-left', margin);
+                this.$('.item-'+index+'.ns-slide-container .ns-slider').css('margin-left', margin);
                 this.$('.ns-strapline-header-inner').css('margin-left', margin);
 
                 item._finalItemLeft = fullSlideWidth - slideWidth;
@@ -156,114 +161,134 @@ define(function(require) {
             this.calculateWidths();
             var _items = this.model.get("_items");
             var thisHandle = this;
-            _.each(_items, function(item) {
-                thisHandle.evaluateNavigation(item._id);
+            _.each(_items, function(item, index) {
+                thisHandle.evaluateNavigation(index);
             });
         },
 
-        moveSliderToIndex: function(itemId, itemIndex, animate) {
-            var extraMargin = parseInt(this.$('#'+itemId+'.ns-slide-container .ns-slider-graphic').css('margin-right')),
-                movementSize = this.$('#'+itemId+'.ns-slide-container').width()+extraMargin;
+        moveSliderToIndex: function(itemIndex, stage, animate) {
+            var extraMargin = parseInt(this.$('.item-'+itemIndex+'.ns-slide-container .ns-slider-graphic').css('margin-right')),
+                movementSize = this.$('.item-'+itemIndex+'.ns-slide-container').width()+extraMargin;
 
             if(animate) {
-                this.$('#'+itemId+'.ns-slide-container .ns-slider').stop().animate({'margin-left': -(movementSize * itemIndex)});
-                this.$('#'+itemId+'.ns-strapline-header .ns-strapline-header-inner').stop(true, true).animate({'margin-left': -(movementSize * itemIndex)});
+                this.$('.item-'+itemIndex+'.ns-slide-container .ns-slider').stop().animate({'margin-left': -(movementSize * stage)});
+                this.$('.item-'+itemIndex+' .ns-strapline-header .ns-strapline-header-inner').stop(true, true).animate({'margin-left': -(movementSize * stage)});
             } else {
-                this.$('#'+itemId+'.ns-slide-container .ns-slider').css({'margin-left': -(movementSize * itemIndex)});
-                this.$('#'+itemId+'.ns-strapline-header .ns-strapline-header-inner').css({'margin-left': -(movementSize * itemIndex)});
+                this.$('.item-'+itemIndex+'.ns-slide-container .ns-slider').css({'margin-left': -(movementSize * stage)});
+                this.$('.item-'+itemIndex+' .ns-strapline-header .ns-strapline-header-inner').css({'margin-left': -(movementSize * stage)});
             }
         },
 
-        setStage: function(itemId, stage, initial) {
-            var _items = this.model.get("_items");
-            var item = _.findWhere(_items, { _id : itemId} );
-            item._stage = stage;
+        setStage: function(itemIndex, stage, initial) {
+            var item = this.model.get('_items')[itemIndex];
 
-            var currentItem = this.getCurrentItem(itemId);
-            currentItem.visited = true;
+            item._stage = stage;
+            item._subItems[stage].isComplete = true;
 
             this.$('.ns-progress').removeClass('selected').eq(stage).addClass('selected');
-            this.$('#'+itemId+'.ns-slide-container .ns-slider-graphic').children('.controls').attr('tabindex', -1);
-            this.$('#'+itemId+'.ns-slide-container .ns-slider-graphic').eq(stage).children('.controls').attr('tabindex', 0);
+            this.$('.item-'+itemIndex+'.ns-slide-container .ns-slider-graphic').children('.controls').attr('tabindex', -1);
+            this.$('.item-'+itemIndex+'.ns-slide-container .ns-slider-graphic').eq(stage).children('.controls').attr('tabindex', 0);
 
-            this.evaluateNavigation(itemId);
+            this.evaluateNavigation(itemIndex);
             this.evaluateCompletion();
 
-            this.moveSliderToIndex(itemId, stage, !initial);
+            this.moveSliderToIndex(itemIndex, stage, !initial);
         },
 
-        evaluateNavigation: function(itemId) {
-            var _items = this.model.get('_items');
-            var item = _.findWhere(_items, {_id: itemId });
+        evaluateNavigation: function(itemIndex) {
+            var item = this.model.get('_items')[itemIndex];
             var currentStage = item._stage;
             var itemCount = item._itemCount;
+
             if (currentStage == 0) {
-                this.$('#'+itemId+'.ns-slide-container .ns-control-left').addClass('ns-hidden');
+                this.$('.item-'+itemIndex+'.ns-slide-container .ns-control-left').addClass('ns-hidden');
 
                 if (itemCount > 1) {
-                    this.$('#'+itemId+'.ns-slide-container .ns-control-right').removeClass('ns-hidden');
+                    this.$('.item-'+itemIndex+'.ns-slide-container .ns-control-right').removeClass('ns-hidden');
                 }
             } else {
-                this.$('#'+itemId+'.ns-slide-container .ns-control-left').removeClass('ns-hidden');
+                this.$('.item-'+itemIndex+'.ns-slide-container .ns-control-left').removeClass('ns-hidden');
 
                 if (currentStage == itemCount - 1) {
-                    this.$('#'+itemId+'.ns-slide-container .ns-control-right').addClass('ns-hidden');
+                    this.$('.item-'+itemIndex+'.ns-slide-container .ns-control-right').addClass('ns-hidden');
                 } else {
-                    this.$('#'+itemId+'.ns-slide-container .ns-control-right').removeClass('ns-hidden');
+                    this.$('.item-'+itemIndex+'.ns-slide-container .ns-control-right').removeClass('ns-hidden');
                 }
             }
-
-        },
-
-        getCurrentItem: function(itemId) {
-            var _items = this.model.get('_items');
-            var item = _.findWhere(_items, {_id: itemId });
-            return item;
-        },
-
-        getVisitedItems: function() {
-          return _.filter(this.model.get('_items'), function(item) {
-                return item.visited;
-          });
         },
 
         evaluateCompletion: function() {
-            if (this.getVisitedItems().length == this.model.get('_items').length) {
-                this.setCompletionStatus();
+            if(this.completionEvent === 'inview') return;
+
+            var items = this.model.get('_items');
+            var isComplete = true;
+
+            for(var i=0,item=null;item=items[i];i++){
+
+                for(var j=0,subItem=null;subItem=item._subItems[j];j++){
+                    if(!subItem.isComplete){
+                        isComplete = false;
+                        break;
+                    }
+                }
+                
+                if(!isComplete) break;                
             }
+
+            if(isComplete) this.setCompletionStatus();
         },
 
         onNavigationClicked: function(event) {
             event.preventDefault();
 
+            var $target = $(event.currentTarget);
+
+            if ($target.hasClass('disabled')) return;
+
             if (!this.model.get('_active')) return;
 
-            var itemId = $(event.currentTarget).attr("id");
+			var selectedItemIndex = $target.parent('.component-item').index();
+            var selectedItemObject = this.model.get('_items')[selectedItemIndex];
 
-            var _items = this.model.get('_items');
-            var item = _.findWhere(_items, {_id: itemId });
+            var stage = selectedItemObject._stage,
+                numberOfItems = selectedItemObject._itemCount;
 
-            var stage = item._stage,
-                numberOfItems = item._itemCount;
-
-            if ($(event.currentTarget).hasClass('ns-control-right')) {
+            if ($target.hasClass('ns-control-right')) {
                 stage++;
                 if (stage == numberOfItems-1) {
                     $('.ns-control-left').focus();
                 }
-            } else if ($(event.currentTarget).hasClass('ns-control-left')) {
+            } else if ($target.hasClass('ns-control-left')) {
                 stage--;
                 if (stage == 0) {
                     $('.ns-control-right').focus();
                 }
             }
             stage = (stage + numberOfItems) % numberOfItems;
-            this.setStage(itemId, stage);
+            this.setStage(selectedItemIndex, stage);
+        },
+
+        inview: function(event, visible, visiblePartX, visiblePartY) {
+            if (visible) {
+                if (visiblePartY === 'top') {
+                    this._isVisibleTop = true;
+                } else if (visiblePartY === 'bottom') {
+                    this._isVisibleBottom = true;
+                } else {
+                    this._isVisibleTop = true;
+                    this._isVisibleBottom = true;
+                }
+
+                if (this._isVisibleTop && this._isVisibleBottom) {                    
+                    this.$('.component-inner').off('inview');
+                    this.setCompletionStatus();
+                }
+            }
         }
 
     });
 
-    Adapt.register("narrativestrip", Narrative);
+    Adapt.register("narrativeStrip", Narrative);
 
     return Narrative;
 

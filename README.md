@@ -1,3 +1,5 @@
+OUT OF DATE - TO BE WORKED ON
+
 #adapt-narrativestrip
 
 An narrative component that displays images, split into sections, with corresponding text and left and right navigation controls to progress through the narrative. Looks like a childs flip book for heads+bodies+feet.

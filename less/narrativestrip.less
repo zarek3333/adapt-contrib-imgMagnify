@@ -1,11 +1,4 @@
-/*
-* adapt-learnerassistant
-* License - http://github.com/adaptlearning/adapt_framework/LICENSE
-* Maintainers - Oliver Foster <oliver.foster@kineo.com>
-*/
-
-.narrativestrip-component {    
-
+.narrativeStrip-component {
     &.desktop { 
         .ns-slide-container {
             float: left;
@@ -14,45 +7,48 @@
         }
         .ns-slider-graphic {
             margin-right: 0;
-            width:100%;
+            width: 100%;
         }
     }
 
     .ns-slide-container {
-        width: 100%;
-        position: relative;
-        overflow-x: hidden;
         float: left;
         margin-top: 5px;
+        overflow-x: hidden;
+        position: relative;
+        width: 100%;
     }  
 
     .ns-slider-graphic {
         float: left;
-        position: relative;
-        overflow:hidden;
+        font-size: 0;
         line-height: 1;
-        font-size: 0px;
+        overflow:hidden;
+        position: relative;
     }
 
     .ns-controls {
+        background-color: @button-color;
         display: block;
-        width: (@icon-size*2);
         height: (@icon-size*2);
+        margin-top: -(@icon-size);
         position: absolute;
-        top: 60%;
-        margin-top: -(@icon-size*2);
-        z-index: 10;
         text-decoration: none;
-        background-color:@button-color;
-        &:hover {
-            background-color:@button-hover-color;
-            .icon {
-                color:@button-text-hover-color;
-            }
-        }
+        top: 50%;
+        width: (@icon-size*2);
+        z-index: 10;
+
         .icon {
+            color: @button-text-color;
             margin: (@icon-size/2);
-            color:@button-text-color;
+        }
+
+        &:hover {
+            background-color: @button-hover-color;
+
+            .icon {
+                color: @button-text-hover-color;
+            }
         }
     }
 
@@ -65,30 +61,29 @@
     }
 
     .ns-strapline {
+        bottom: 0;
         color: @inverted-foreground-color;
         height: auto;
         position: absolute;
-        bottom: 0px;
-    }
+    }    
 
-    
-
-    .ns-strapline-header {
-        
+    .ns-strapline-header {        
         position: relative;
     }
 
     .ns-strapline-header-inner {
         overflow: hidden;
+
         &.ns-noop {
-            opacity: .5;
             background-color: @inverted-background-color;
-             position:absolute;
-             bottom: 0px;
+            bottom: 0;
+            opacity: .5;
+            position: absolute;
         }
+
         &:not(.ns-noop) {
-           position:absolute;
-           bottom: 0px;
+           bottom: 0;
+           position: absolute;
         }
     }
 
@@ -100,15 +95,14 @@
         height: (@item-padding-top + @item-padding-bottom + @icon-size);
         line-height: (@item-padding-top + @item-padding-bottom + @icon-size);
         padding-left: (@icon-size/2);
-        padding-right: (@item-padding-left + @item-padding-right + @icon-size);
-        text-overflow: ellipsis;
-        white-space: nowrap;
+        padding-right: (@icon-size/2);
         overflow: hidden;
         text-align: center;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 
     .ns-hidden {
-        display:none;
+        display: none;
     }
-
 }

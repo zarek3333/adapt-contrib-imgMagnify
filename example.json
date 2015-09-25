@@ -1,55 +1,52 @@
-/*
-* adapt-learnerassistant
-* License - http://github.com/adaptlearning/adapt_framework/LICENSE
-* Maintainers - Oliver Foster <oliver.foster@kineo.com>
-*/
-
-//to go in component.json
 {
-    "_id":"c-195",
-    "_parentId":"b-21",
-    "_type":"component",
-    "_component": "narrativestrip",
-    "_classes":"",
-    "_layout":"left",
-    "title": "Bank 1 - Question 8",
-    "displayTitle": "Bank 1 - Question 8",
+    "_id": "c-05",
+    "_parentId": "b-05",
+    "_type": "component",
+    "_component": "narrativeStrip",
+    "_classes": "",
+    "_layout": "right",
+    "title": "Narrative Strip",
+    "displayTitle": "Narrative Strip",
     "body": "Body text",
     "instruction":"Instruction text",
     "_images": [
         {
             "_id": 1,
             "src": "course/en/images/test-one.jpg",
-            "alt": "Origami birds",
+            "alt": "",
             "title": ""
         },
         {
             "_id": 2,
             "src": "course/en/images/test-two.jpg",
-            "alt": "Origami birds",
+            "alt": "",
             "title": ""
         },
         {
             "_id": 3,
             "src": "course/en/images/test-three.jpg",
-            "alt": "Origami birds",
+            "alt": "",
             "title": ""
         },
         {
             "_id": 4,
             "src": "course/en/images/test-four.jpg",
-            "alt": "Origami birds",
+            "alt": "",
             "title": ""
         }
     ],
     "_items": [
         {
             "_id": "top",
-            "_initialItemIndex": 1,
+            "_initialItemIndex": 0,
             "_subItems": [
                 {
                     "_imageId": 1,
                     "strapline": "Top 1"
+                },
+                {
+                    "_imageId": 2,
+                    "strapline": "Top 2"
                 },
                 {
                     "_imageId": 3,
@@ -58,24 +55,20 @@
                 {
                     "_imageId": 4,
                     "strapline": "Top 4"
-                },
-                {
-                    "_imageId": 2,
-                    "strapline": "Top 2"
                 }
             ]
         },
         {
             "_id": "middle",
-            "_initialItemIndex": 1,
+            "_initialItemIndex": 0,
             "_subItems": [
-                {
-                    "_imageId": 2,
-                    "strapline": "Middle 2"
-                },
                 {
                     "_imageId": 1,
                     "strapline": "Middle 1"
+                },
+                {
+                    "_imageId": 2,
+                    "strapline": "Middle 2"
                 },
                 {
                     "_imageId": 3,
@@ -89,12 +82,8 @@
         },
         {
             "_id": "bottom",
-            "_initialItemIndex": 1,
+            "_initialItemIndex": 0,
             "_subItems": [
-                {
-                    "_imageId": 4,
-                    "strapline": "Bottom 4"
-                },
                 {
                     "_imageId": 1,
                     "strapline": "Bottom 1"
@@ -106,11 +95,15 @@
                 {
                     "_imageId": 3,
                     "strapline": "Bottom 3"
+                },
+                {
+                    "_imageId": 4,
+                    "strapline": "Bottom 4"
                 }
             ]
         }
     ],
     "_pageLevelProgress": {
-        "_isEnabled": false
+        "_isEnabled": true
     }
 }

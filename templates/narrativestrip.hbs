@@ -3,12 +3,12 @@
     <div class="ns-widget component-widget">
 
         {{#each _items}}
-        <div id="{{_id}}" class="ns-slide-container">
+        <div class="ns-slide-container component-item item-{{@index}}">
   
-            <a href="#" class="ns-controls ns-control-left" id="{{_id}}" alt="{{_buttons.previous}}">
+            <a href="#" class="ns-controls ns-control-left" alt="{{_buttons.previous}}">
                 <div class="icon icon-controls-left"></div>
             </a>
-            <a href="#" class="ns-controls ns-control-right" id="{{_id}}" alt="{{_buttons.next}}">
+            <a href="#" class="ns-controls ns-control-right" alt="{{_buttons.next}}">
                 <div class="icon icon-controls-right"></div>
             </a>
             
@@ -19,7 +19,7 @@
             </div>
 
             <div class="ns-strapline">
-                <div  id="{{_id}}" class="ns-strapline-header">
+                <div class="ns-strapline-header">
                     <div class="ns-strapline-header-inner ns-noop clearfix">
                         {{#each _subItems}}
                         <div class="ns-strapline-title">
@@ -36,14 +36,11 @@
                             </h5>
                         </div>
                         {{/each}}
-                    </div>
-                    
-
+                    </div> 
                 </div>
             </div>
-
         </div>
         {{/each}}
-       
+
     </div>    
 </div>
