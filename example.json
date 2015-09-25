@@ -12,27 +12,19 @@
     "_images": [
         {
             "_id": 1,
-            "src": "course/en/images/test-one.jpg",
-            "alt": "",
-            "title": ""
+            "src": "course/en/images/test-one.jpg"
         },
         {
             "_id": 2,
-            "src": "course/en/images/test-two.jpg",
-            "alt": "",
-            "title": ""
+            "src": "course/en/images/test-two.jpg"
         },
         {
             "_id": 3,
-            "src": "course/en/images/test-three.jpg",
-            "alt": "",
-            "title": ""
+            "src": "course/en/images/test-three.jpg"
         },
         {
             "_id": 4,
-            "src": "course/en/images/test-four.jpg",
-            "alt": "",
-            "title": ""
+            "src": "course/en/images/test-four.jpg"
         }
     ],
     "_items": [
