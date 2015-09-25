@@ -1,33 +1,74 @@
-OUT OF DATE - TO BE WORKED ON
+# adapt-narrativeStrip
 
-#adapt-narrativestrip
+**Narrative Strip** is a C&G Kineo *presentation component*.
 
-An narrative component that displays images, split into sections, with corresponding text and left and right navigation controls to progress through the narrative. Looks like a childs flip book for heads+bodies+feet.
+An narrative component that displays images, split vertically into sections, with corresponding text and left and right navigation controls to progress through the narrative. The component resembles a childs flip book for heads, bodies and feet.
 
-##Settings overview
+##Installation
 
-Will split the images automatically into x number of vertical segments. Supply full height images.
+Open the /src/components folder in a new terminal window on Mac OSX or right click the folder and select 'Git Bash Here' on Windows.
 
-For example JSON format, see [example.json](https://github.com/cgkineo/adapt-narrativestrip/blob/master/example.json).
+Git clone the component, making sure to delete the hidden .git folder from the adapt-narrativeStrip folder.
 
-1. Supply full height images for each slide in _images: [1,2,3,4]
-2. Use _items to define the number of vertical divisions [top, middle, bottom, etc]
-3. Use _subItems to assign images to each vertical division's horizonal flip [top[4,2,3,1], middle[2,1,4,3], bottom[1,3,2,4]]
-```
-  loadImages: image1, image2, image3, image4
+## Settings Overview
 
-  divide accordingly:
-  
-    divisionTop: [image4, image2, image3, image1]  
-    divisionMiddle: [image2, image1, image4, image3]
-    divisionBottom: [image1, image3, image2, image4]  
-    
-  Using a human body as an example:
-  
-    In the first column image4's head will appear with image2's body and image1's legs.
-    In the second column image2's head will appear with image1's body and image3's legs.
-    In the last column image1's head will appear with image3's body and image4's legs.
-    
-    So selecting top column 2, moddile column 1 and bottom column 2 would draw image 2 in full.
-  
-```
+The attributes listed below are used in *components.json* to configure **Narrative Strip**, and are properly formatted as JSON in [*example.json*](https://github.com/cgkineo/adapt-narrativeStrip/blob/master/example.json).
+
+### Attributes
+
+**_id** (string): A unique identifier.
+
+**_parentId** (string): An identifier that links the component to the parent block.
+
+**_type** (string): The type of the particular item. Examples include block and component.	
+
+**_component** (string): This value must be: `narrativeStrip`.
+
+**_classes** (string): CSS class name to be applied to **Narrative Strip**’s containing div. The class must be predefined in one of the Less files. Separate multiple classes with a space.
+
+**_layout** (string): This defines the horizontal position of the component in the block. Acceptable values are `full`, `left` or `right`.
+
+**title** (string): The title of the particular item.	
+
+**displayTitle** (string): This is the title that Adapt displays when viewing a course.	
+
+**body** (string): The body text content of the particular item.	
+
+**instruction** (string): This optional text appears above the component. It is frequently used to
+guide the learner’s interaction with the component.
+
+**_images** (array): Multiple images may be created. Each _image represents one element of the Narrative Strip component and contains values for **_id** and **src**.
+
+>**_id** (number): A unique identifier for each supplied image.
+
+>**src** (string): File name (including path) of the image. Path should be relative to the *src* folder (e.g., *course/en/images/narrative-strip.jpg*).
+
+**_items** (array): Multiple items may be created. Each _item represents one vertical section of the supplied _image. Contains values for **_id**, **_initialItemIndex** and **_subItems**.
+
+>**_id** (number): A unique identifier for each vertical section.
+
+>**_initialItemIndex** (number): Defines which segment of the section displays on page load.
+
+>**_subItems** (array): Multiple _subItems may be created. Each _subItem represents a segment of a section. 
+
+>>**_imageId** (number): A unique identifier for each _subItem image segment.
+
+>>**strapline** (string): This text is overlaid on each segment.
+
+
+### Accessibility
+**Narrative Strip** is not currently accessible.
+
+
+## Limitations
+
+**Narrative Strip** is not currently supported on IE8, 9 or 10.
+
+
+----------------------------
+**Version number:**  2.0
+**Framework versions:** 2.0
+**Author / maintainer:** C&G Kineo
+**Accessibility support:** N/A
+**RTL support:** No  
+**Cross-platform coverage:** To be confirmed
