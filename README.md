@@ -49,7 +49,7 @@ guide the learner’s interaction with the component.
 
 >**_initialItemIndex** (number): Defines which segment of the section displays on page load.
 
->**_subItems** (array): Multiple _subItems may be created. Each _subItem represents a segment of a section. 
+>**_subItems** (array): Multiple _subItems may be created. Each _subItem represents a segment of a section. Contains values for **_imageID** and **strapline**.
 
 >>**_imageId** (number): A unique identifier for each _subItem image segment.
 
