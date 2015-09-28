@@ -1,3 +1,4 @@
+//to go in component.json
 {
     "_id": "c-05",
     "_parentId": "b-05",
@@ -8,7 +9,7 @@
     "title": "Narrative Strip",
     "displayTitle": "Narrative Strip",
     "body": "Body text",
-    "instruction":"Instruction text",
+    "instruction": "Instruction text",
     "_images": [
         {
             "_id": 1,
