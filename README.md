@@ -62,7 +62,7 @@ guide the learner’s interaction with the component.
 
 ## Limitations
 
-**Narrative Strip** is not currently supported on IE8, 9 or 10.
+**Narrative Strip** is not currently supported on IE8.
 
 
 ----------------------------
