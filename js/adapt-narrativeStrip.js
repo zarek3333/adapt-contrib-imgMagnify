@@ -77,7 +77,6 @@ define([ "coreJS/adapt", "coreViews/componentView" ], function(Adapt, ComponentV
                         thisHandle.$('.item-'+s+'.ns-slide-container .i'+image._id).append(img);
                         imagesToLoadCount++;
                         $(img).bind("load", function() {
-                            $(img).attr("height","");
                             imagesLoadedCount++;
 
                             if (imagesToLoadCount == imagesLoadedCount) {
