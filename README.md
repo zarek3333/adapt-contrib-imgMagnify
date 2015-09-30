@@ -2,19 +2,19 @@
 
 **Narrative Strip** is a C&G Kineo *presentation component*.
 
-An narrative component that displays images, split vertically into sections, with corresponding text and left and right navigation controls to progress through the narrative. The component resembles a childs flip book for heads, bodies and feet.
+A narrative component that displays images, split vertically into sections, with corresponding text and left and right navigation controls to progress through the narrative. The component resembles a childs flip book for heads, bodies and feet.
 
 ##Installation
 
-Open the /src/components folder in a new terminal window on Mac OSX or right click the folder and select 'Git Bash Here' on Windows.
+Open the */src/components* folder in a new terminal window on Mac OSX or right click the folder and select 'Git Bash Here' on Windows.
 
-Git clone the component, making sure to delete the hidden .git folder from the adapt-narrativeStrip folder.
+Git clone the component, making sure to delete the hidden **.git** folder from the *adapt-narrativeStrip* folder.
 
 ## Settings Overview
 
 The attributes listed below are used in *components.json* to configure **Narrative Strip**, and are properly formatted as JSON in [*example.json*](https://github.com/cgkineo/adapt-narrativeStrip/blob/master/example.json).
 
-### Attributes
+## Attributes
 
 **_id** (string): A unique identifier.
 
@@ -24,7 +24,7 @@ The attributes listed below are used in *components.json* to configure **Narrati
 
 **_component** (string): This value must be: `narrativeStrip`.
 
-**_classes** (string): CSS class name to be applied to **Narrative Strip**’s containing div. The class must be predefined in one of the Less files. Separate multiple classes with a space.
+**_classes** (string): CSS class name to be applied to the container div. The class must be predefined in one of the Less files. Separate multiple classes with a space.
 
 **_layout** (string): This defines the horizontal position of the component in the block. Acceptable values are `full`, `left` or `right`.
 
@@ -37,7 +37,7 @@ The attributes listed below are used in *components.json* to configure **Narrati
 **instruction** (string): This optional text appears above the component. It is frequently used to
 guide the learner’s interaction with the component.
 
-**_images** (array): Multiple images may be created. Each _image represents one element of the Narrative Strip component and contains values for **_id** and **src**.
+**_images** (array): Multiple images may be created. Each *_image* represents one element of the Narrative Strip component and contains values for **_id** and **src**.
 
 >**_id** (number): A unique identifier for each supplied image.
 
@@ -49,26 +49,24 @@ guide the learner’s interaction with the component.
 
 >**_initialItemIndex** (number): Defines which segment of the section displays on page load.
 
->**_subItems** (array): Multiple _subItems may be created. Each _subItem represents a segment of a section. Contains values for **_imageID** and **strapline**.
+>**_subItems** (array): Multiple *_subItems* may be created. Each *_subItem* represents a segment of a section. Contains values for **_imageId** and **strapline**.
 
->>**_imageId** (number): A unique identifier for each _subItem image segment.
+>>**_imageId** (number): A unique identifier for each *_subItem* image segment.
 
 >>**strapline** (string): This text is overlaid on each segment.
 
+## Accessibility
 
-### Accessibility
 **Narrative Strip** is not currently accessible.
-
 
 ## Limitations
 
 **Narrative Strip** is not currently supported on IE8.
 
-
 ----------------------------
 **Version number:**  2.0  
 **Framework versions:** 2.0  
 **Author / maintainer:** C&G Kineo  
-**Accessibility support:** N/A  
+**Accessibility support:** No  
 **RTL support:** No  
-**Cross-platform coverage:** To be confirmed
+**Cross-platform coverage:** To be confirmed  

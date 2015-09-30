@@ -4,7 +4,7 @@
   "framework": "^2.0.0",
   "displayName" : "Narrative Strip",
   "component" : "narrativeStrip",
-  "description": "An narrative question component that displays images, split into sections, with corresponding text and left and right navigation controls to progress through the narrative.",
+  "description": "A narrative question component that displays images, split into sections, with corresponding text and left and right navigation controls to progress through the narrative.",
   "main": "/js/adapt-narrativeStrip.js",
   "keywords": [
     "adapt-plugin",
