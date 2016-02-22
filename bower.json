@@ -1,15 +1,17 @@
 {
-  "name": "adapt-narrativeStrip",
-  "version": "2.0.0",
-  "framework": "^2.0.0",
-  "displayName" : "Narrative Strip",
-  "component" : "narrativeStrip",
-  "description": "A narrative question component that displays images, split into sections, with corresponding text and left and right navigation controls to progress through the narrative.",
-  "main": "/js/adapt-narrativeStrip.js",
-  "keywords": [
-    "adapt-plugin",
-    "adapt-component"
-  ],
-  "license": "GPL-3.0",
-  "homepage": "https://github.com/cgkineo/adapt-narrativeStrip"
+    "name": "adapt-narrativeStrip",
+    "repository": "git://github.com/cgkineo/adapt-narrativeStrip",
+    "framework": "^2.0.0",
+    "version": "2.0.0",
+    "homepage": "https://github.com/cgkineo/adapt-narrativeStrip",
+    "issues": "https://github.com/cgkineo/adapt-narrativeStrip/issues/",
+    "displayName": "Narrative Strip",
+    "component": "narrativeStrip",
+    "description": "A narrative question component that displays images, split into sections, with corresponding text and left and right navigation controls to progress through the narrative.",
+    "main": "/js/adapt-narrativeStrip.js",
+    "keywords": [
+        "adapt-plugin",
+        "adapt-component"
+    ],
+    "license": "GPLv3"
 }
