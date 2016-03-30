@@ -133,19 +133,21 @@ define([ "coreJS/adapt", "coreViews/componentView" ], function(Adapt, ComponentV
                 var extraMargin = marginRight === "" ? 0 : parseInt(marginRight);
                 var fullSlideWidth = (slideWidth + extraMargin) * slideCount;
                 var iconWidth = this.$('.ns-popup-open').outerWidth();
+                var $headerInner = this.$(".item-" + index)
+                    .find(".ns-strapline-header-inner");
 
                 this.$('.item-'+index+'.ns-slide-container .ns-slider-graphic').width(slideWidth)
                 this.$('.ns-strapline-header').width(slideWidth);
                 this.$('.ns-strapline-title').width(slideWidth);
 
                 this.$('.item-'+index+'.ns-slide-container .ns-slider').width(fullSlideWidth);
-                this.$('.ns-strapline-header-inner').width(fullSlideWidth);
+                $headerInner.width(fullSlideWidth);
 
                 var stage = item._stage;//this.model.get('_stage');
                 var margin = -(stage * slideWidth);
 
                 this.$('.item-'+index+'.ns-slide-container .ns-slider').css('margin-left', margin);
-                this.$('.ns-strapline-header-inner').css('margin-left', margin);
+                $headerInner.css("margin-left", margin);
 
                 item._finalItemLeft = fullSlideWidth - slideWidth;
             });
