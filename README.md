@@ -4,7 +4,7 @@
 
 A narrative component that displays images, split vertically into sections, with corresponding text and left and right navigation controls to progress through the narrative. The component resembles a childs flip book for heads, bodies and feet.
 
-##Installation
+## Installation
 
 Open the */src/components* folder in a new terminal window on Mac OSX or right click the folder and select 'Git Bash Here' on Windows.
 
@@ -16,17 +16,17 @@ The attributes listed below are used in *components.json* to configure **Narrati
 
 ## Attributes
 
-**_id** (string): A unique identifier.
+**\_id** (string): A unique identifier.
 
-**_parentId** (string): An identifier that links the component to the parent block.
+**\_parentId** (string): An identifier that links the component to the parent block.
 
-**_type** (string): The type of the particular item. Examples include block and component.	
+**\_type** (string): The type of the particular item. Examples include block and component.	
 
-**_component** (string): This value must be: `narrativeStrip`.
+**\_component** (string): This value must be: `narrativeStrip`.
 
-**_classes** (string): CSS class name to be applied to the container div. The class must be predefined in one of the Less files. Separate multiple classes with a space.
+**\_classes** (string): CSS class name to be applied to the container div. The class must be predefined in one of the Less files. Separate multiple classes with a space.
 
-**_layout** (string): This defines the horizontal position of the component in the block. Acceptable values are `full`, `left` or `right`.
+**\_layout** (string): This defines the horizontal position of the component in the block. Acceptable values are `full`, `left` or `right`.
 
 **title** (string): The title of the particular item.	
 
@@ -37,21 +37,21 @@ The attributes listed below are used in *components.json* to configure **Narrati
 **instruction** (string): This optional text appears above the component. It is frequently used to
 guide the learner’s interaction with the component.
 
-**_images** (array): Multiple images may be created. Each *_image* represents one element of the Narrative Strip component and contains values for **_id** and **src**.
+**\_images** (array): Multiple images may be created. Each *\_image* represents one element of the Narrative Strip component and contains values for **\_id** and **src**.
 
->**_id** (number): A unique identifier for each supplied image.
+>**\_id** (number): A unique identifier for each supplied image.
 
 >**src** (string): File name (including path) of the image. Path should be relative to the *src* folder (e.g., *course/en/images/narrative-strip.jpg*).
 
-**_items** (array): Multiple items may be created. Each _item represents one vertical section of the supplied _image. Contains values for **_id**, **_initialItemIndex** and **_subItems**.
+**\_items** (array): Multiple items may be created. Each \_item represents one vertical section of the supplied \_image. Contains values for **\_id**, **\_initialItemIndex** and **\_subItems**.
 
->**_id** (number): A unique identifier for each vertical section.
+>**\_id** (number): A unique identifier for each vertical section.
 
->**_initialItemIndex** (number): Defines which segment of the section displays on page load.
+>**\_initialItemIndex** (number): Defines which segment of the section displays on page load.
 
->**_subItems** (array): Multiple *_subItems* may be created. Each *_subItem* represents a segment of a section. Contains values for **_imageId** and **strapline**.
+>**\_subItems** (array): Multiple *\subItems* may be created. Each *\_subItem* represents a segment of a section. Contains values for **\_imageId** and **strapline**.
 
->>**_imageId** (number): A unique identifier for each *_subItem* image segment.
+>>**\_imageId** (number): A unique identifier for each *\_subItem* image segment.
 
 >>**strapline** (string): This text is overlaid on each segment.
 
@@ -65,7 +65,7 @@ guide the learner’s interaction with the component.
 
 ----------------------------
 **Version number:**  2.0  
-**Framework versions:** 2.0  
+**Framework versions:** 2+  
 **Author / maintainer:** C&G Kineo  
 **Accessibility support:** No  
 **RTL support:** No  
