@@ -2,9 +2,11 @@
 
 This component is basically a contrib-graphic component with notify if needed which turns an image into one that can be magnified or zoomed into.
 
+[Click Here to download component](https://github.com/mike-st/adapt-contrib-imgMagnify)
+
 ---
 
-<img src="https://raw.githubusercontent.com/mike-st/adapt-contrib-imgMagnify/master/img-magnify.jpg" alt="Adapt Image Magnify Component" width="800" height="600" border="10" />
+<a herf="https://github.com/mike-st/adapt-contrib-imgMagnify" target="_blank"><img src="https://raw.githubusercontent.com/mike-st/adapt-contrib-imgMagnify/master/img-magnify.jpg" alt="Adapt Image Magnify Component" width="800" height="600" border="10" /></a>
 
 ## Usage
 
