@@ -43,7 +43,8 @@ define([
                 'click .imgMagnify-bottom-text #mypopup' : 'mynotifyPopup',
                 'click .imgMagnify-bottom-text #myalert' : 'mynotifyAlert',
                 'click .imgMagnify-bottom-text #myexternalink' : 'myexternaLink',
-                'mousemove .enableMagnify' : 'enabledZoom'
+                'mousemove .enableMagnify' : 'enabledZoom',
+                'keydown .enableMagnify' : 'accessibleZoom'
             }
         },
 
@@ -181,6 +182,11 @@ define([
 
         enabledZoom: function (event) {
             this.setCompletionStatus();
+        },
+
+        accessibleZoom: function (event) {
+            var getcurrentid = this.model.get('_id');
+            $('.accessibility .' + getcurrentid + ' .enableMagnify').focus(this.setCompletionStatus());
         }
 
     });
