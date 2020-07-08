@@ -1,9 +1,10 @@
 define([
+    'core/js/models/componentModel', // add this
+    'core/js/views/componentView', // change these to use proper paths
     'core/js/adapt',
-    'core/js/views/componentView',
     'libraries/jquery.magnify',
     'libraries/jquery.magnifymobile'
-],function(Adapt, ComponentView, magnify, magnifymobile) {
+],function(ComponentModel, ComponentView, Adapt, magnify, magnifymobile) {
     'use strict';
 
     var ImgMagnify = ComponentView.extend({
@@ -26,20 +27,20 @@ define([
         events: function() {
             return Adapt.device.touch == true ? {
                 'inview':                       'inview',
-                'click .imgMagnify-body-inner #mypopup' : 'mynotifyPopup',
-                'click .imgMagnify-body-inner #myalert' : 'mynotifyAlert',
-                'click .imgMagnify-body-inner #myexternalink' : 'myexternaLink',
-                'click .component-inner #mybutton' : 'mynotifyButton',
+                'click .imgmagnify__body-inner #mypopup' : 'mynotifyPopup',
+                'click .imgmagnify__body-inner #myalert' : 'mynotifyAlert',
+                'click .imgmagnify__body-inner #myexternalink' : 'myexternaLink',
+                'click .component__inner #mybutton' : 'mynotifyButton',
                 'click .imgMagnify-bottom-text #mypopup' : 'mynotifyPopup',
                 'click .imgMagnify-bottom-text #myalert' : 'mynotifyAlert',
                 'click .imgMagnify-bottom-text #myexternalink' : 'myexternaLink',
                 'touchmove .enableMagnify' : 'enabledZoom'
             } : {
                 'inview':                       'inview',
-                'click .imgMagnify-body-inner #mypopup' : 'mynotifyPopup',
-                'click .imgMagnify-body-inner #myalert' : 'mynotifyAlert',
-                'click .imgMagnify-body-inner #myexternalink' : 'myexternaLink',
-                'click .component-inner #mybutton' : 'mynotifyButton',
+                'click .imgmagnify__body-inner #mypopup' : 'mynotifyPopup',
+                'click .imgmagnify__body-inner #myalert' : 'mynotifyAlert',
+                'click .imgmagnify__body-inner #myexternalink' : 'myexternaLink',
+                'click .component__inner #mybutton' : 'mynotifyButton',
                 'click .imgMagnify-bottom-text #mypopup' : 'mynotifyPopup',
                 'click .imgMagnify-bottom-text #myalert' : 'mynotifyAlert',
                 'click .imgMagnify-bottom-text #myexternalink' : 'myexternaLink',
@@ -72,7 +73,7 @@ define([
                 }
 
                 if (this._isVisibleTop && this._isVisibleBottom) {
-                    this.$('.component-widget').off('inview');
+                    this.$('.component__widget').off('inview');
                 }
 
             }
@@ -81,7 +82,7 @@ define([
         remove: function() {
 
             // Remove any 'inview' listener attached.
-            this.$('.component-widget').off('inview');
+            this.$('.component__widget').off('inview');
 
             ComponentView.prototype.remove.apply(this, arguments);
             
@@ -90,14 +91,14 @@ define([
         resizeImage: function(width, setupInView) {
             var imageWidth = width === 'medium' ? 'small' : width;
             var imageSrc = (this.model.get('_graphic')) ? this.model.get('_graphic')[imageWidth] : '';
-            this.$('.graphic-widget img').attr('src', imageSrc);
+            this.$('.graphic__widget img').attr('src', imageSrc);
 
-            this.$('.graphic-widget').imageready(_.bind(function() {
+            this.$('.graphic__widget').imageready(_.bind(function() {
                 this.setReadyStatus();
 
                 if (setupInView) {
                     // Bind 'inview' once the image is ready.
-                    this.$('.component-widget').on('inview', _.bind(this.inview, this));
+                    this.$('.component__widget').on('inview', _.bind(this.inview, this));
                 }
             }, this));
         },
@@ -119,8 +120,8 @@ define([
 
             Adapt.trigger('notify:popup', popupObject);
             this.setCompletionStatus();
-            $('.accessibility .' + getcurrentid + ' .imgMagnify-body-inner').removeAttr('tabindex');
-            $('.accessibility .' + getcurrentid + ' .imgMagnify-body-inner p').attr('tabindex','0');
+            $('.accessibility .' + getcurrentid + ' .imgmagnify__body-inner').removeAttr('tabindex');
+            $('.accessibility .' + getcurrentid + ' .imgmagnify__body-inner p').attr('tabindex','0');
         },
 
         mynotifyAlert: function (event) {
@@ -142,8 +143,8 @@ define([
 
             Adapt.trigger('notify:alert', alertObject);
             this.setCompletionStatus();
-            $('.accessibility .' + getcurrentid + ' .imgMagnify-body-inner').removeAttr('tabindex');
-            $('.accessibility .' + getcurrentid + ' .imgMagnify-body-inner p').attr('tabindex','0');
+            $('.accessibility .' + getcurrentid + ' .imgmagnify__body-inner').removeAttr('tabindex');
+            $('.accessibility .' + getcurrentid + ' .imgmagnify__body-inner p').attr('tabindex','0');
         },
         
         myexternaLink: function (event) {
@@ -153,8 +154,8 @@ define([
 
             var getcurrentid = this.model.get('_id');
             this.setCompletionStatus();
-            $('.accessibility .' + getcurrentid + ' .imgMagnify-body-inner').removeAttr('tabindex');
-            $('.accessibility .' + getcurrentid + ' .imgMagnify-body-inner p').attr('tabindex','0');
+            $('.accessibility .' + getcurrentid + ' .imgmagnify__body-inner').removeAttr('tabindex');
+            $('.accessibility .' + getcurrentid + ' .imgmagnify__body-inner p').attr('tabindex','0');
         },
 
         mynotifyButton: function (event) {
@@ -176,8 +177,8 @@ define([
 
             Adapt.trigger('notify:alert', buttonObject);
             this.setCompletionStatus();
-            $('.accessibility .' + getcurrentid + ' .imgMagnify-body-inner').removeAttr('tabindex');
-            $('.accessibility .' + getcurrentid + ' .imgMagnify-body-inner p').attr('tabindex','0');
+            $('.accessibility .' + getcurrentid + ' .imgmagnify__body-inner').removeAttr('tabindex');
+            $('.accessibility .' + getcurrentid + ' .imgmagnify__body-inner p').attr('tabindex','0');
         },
 
         enabledZoom: function (event) {
@@ -191,6 +192,11 @@ define([
 
     });
 
-    Adapt.register('imgMagnify', ImgMagnify);
+    //Adapt.register('imgMagnify', ImgMagnify);
+    Adapt.register('imgMagnify', {
+      model: ComponentModel.extend({}), // register the model, it should be an extension of ComponentModel, an empty extension is fine
+      view: ImgMagnify
+    });
+
     return ImgMagnify;
 });

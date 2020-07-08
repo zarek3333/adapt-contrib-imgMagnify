@@ -22,8 +22,3 @@ Use the `_popupData` object to specify the text shown in the notify. The key val
   }
 }
 ```
-
-## Limitations
- 
-<p><strong>DOES NOT WORK WITH FRAMEWORK VERSION 5</strong>. Please go to the Framework 5 version of this component on my other github site...</p>
-[github.com/zarek3333/adapt-contrib-imgMagnify](https://github.com/zarek3333/adapt-contrib-imgMagnify)

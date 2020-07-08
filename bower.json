@@ -1,7 +1,7 @@
 {
   "name": "adapt-contrib-imgMagnify",
-  "version": "4.0.9",
-  "framework": ">=3.3",
+  "version": "5.0.9",
+  "framework": ">=5.0.0",
   "homepage": "git://github.com/mike-st/adapt-contrib-imgMagnify",
   "issues": "",
   "displayName" : "Image Magnify with text Notify",
