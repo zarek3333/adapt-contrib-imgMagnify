@@ -118,7 +118,7 @@ define([
                 _classes: ' txtpopnotify'
             };
 
-            Adapt.trigger('notify:popup', popupObject);
+            Adapt.notify.popup(popupObject);
             this.setCompletionStatus();
             $('.accessibility .' + getcurrentid + ' .imgmagnify__body-inner').removeAttr('tabindex');
             $('.accessibility .' + getcurrentid + ' .imgmagnify__body-inner p').attr('tabindex','0');
@@ -141,7 +141,7 @@ define([
                 _classes: ' txtalertnotify'
             };
 
-            Adapt.trigger('notify:alert', alertObject);
+            Adapt.notify.alert(alertObject);
             this.setCompletionStatus();
             $('.accessibility .' + getcurrentid + ' .imgmagnify__body-inner').removeAttr('tabindex');
             $('.accessibility .' + getcurrentid + ' .imgmagnify__body-inner p').attr('tabindex','0');
@@ -175,7 +175,7 @@ define([
                 _classes: ' txtbutnotify'
             };
 
-            Adapt.trigger('notify:alert', buttonObject);
+            Adapt.notify.alert(buttonObject);
             this.setCompletionStatus();
             $('.accessibility .' + getcurrentid + ' .imgmagnify__body-inner').removeAttr('tabindex');
             $('.accessibility .' + getcurrentid + ' .imgmagnify__body-inner p').attr('tabindex','0');
